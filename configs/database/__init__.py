@@ -1,7 +1,7 @@
 import psycopg2
 
 class db():
-    conn = psycopg2.connect('dbname=api user=web password=kokodayo host=127.0.0.1 port=5432')
+    conn = psycopg2.connect('dbname=api user=web password=kokodayo host=192.168.1.10 port=5432')
 
     def create(self,):
         cur = self.conn.cursor()
