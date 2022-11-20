@@ -1,7 +1,7 @@
 import random
 
 class roll():
-    def roll(ranging, repeat=1, add=0, plus=1):
+    def roll(self, ranging, repeat=1, add=0, plus=1):
         result = []
         final = 0
         for i in range(0,repeat):

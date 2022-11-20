@@ -36,7 +36,7 @@ def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None
     return encoded_jwt
 
 
-@router.post("/login/", tags=['auth'])
+@router.post("/token", tags=['auth'])
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     cur = db_conn.create()
     cur.execute('SELECT password FROM user_list WHERE email = (%s)', (form_data.username,))

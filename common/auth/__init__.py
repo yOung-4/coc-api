@@ -19,9 +19,7 @@ db_conn = db()
 
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                                          detail="Could not validate credentials",
-                                          headers={"WWW-Authenticate": "Bearer"}, )
+    credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate credentials", headers={"WWW-Authenticate": "Bearer"}, )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
@@ -31,8 +29,12 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     except JWTError:
         raise credentials_exception
     cur = db_conn.create()
-    cur.execute('SELECT FROM user_list WHERE email = (%s)', (token_data.username,))
+    cur.execute('SELECT uuid FROM user_list WHERE email = (%s)', (token_data.username,))
     db_result = cur.fetchall()
     if db_result == []:
+        cur.close
+        db_conn.commit(cur)
         raise credentials_exception
-    return token_data.username
+    cur.close
+    db_conn.commit(cur)
+    return db_result[0][0]
