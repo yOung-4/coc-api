@@ -58,18 +58,19 @@ def new_char_1(char_info_base: char_info_base, current_user_uuid = Depends(get_c
     if db_result[0][0] == True:
         #获取ID
         cur.execute()
-        cur.execute('''UPDATE %s SET STR=(%s), CON=(%s), SIZ=(%s), DEX=(%s), APP=(%s), INT=(%s), POW=(%s), EDU=(%s), LUC=(%s) WHERE id = (%s)''', 
-            (table_name
-            char_info_base.STR, 
-            char_info_base.CON, 
-            char_info_base.SIZ, 
-            char_info_base.DEX, 
-            char_info_base.APP, 
-            char_info_base.INT, 
-            char_info_base.POW, 
-            char_info_base.EDU, 
-            char_info_base.LUC, 
-            ))
+        cur.execute\
+            ('''UPDATE %s SET STR=(%s), CON=(%s), SIZ=(%s), DEX=(%s), APP=(%s), INT=(%s), POW=(%s), EDU=(%s), LUC=(%s) WHERE id = (%s)''', 
+                (table_name,
+                char_info_base.STR, 
+                char_info_base.CON, 
+                char_info_base.SIZ, 
+                char_info_base.DEX, 
+                char_info_base.APP, 
+                char_info_base.INT, 
+                char_info_base.POW, 
+                char_info_base.EDU, 
+                char_info_base.LUC, )
+            )
     #否则就新增一条记录
     else:
         cur.execute('''INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s)''', 
