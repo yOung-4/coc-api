@@ -1,1 +1,5 @@
-fastapi
+fastapi[all]
+sqlalchemy
+python-jose[cryptography]
+uuid
+psycopg-binaryd
