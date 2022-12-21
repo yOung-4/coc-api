@@ -1,7 +1,3 @@
 fastapi[all]
-python-jose[cryptography]
-uuid
-psycopg2-binary
-sqlalchemy
-passlib
 verify-email
+sqlalchemy

@@ -1,1 +1,0 @@
-sqlalchemy.exc.ArgumentError: Mapper mapped class user_list->user_list could not assemble any primary key columns for mapped table 'user_list'
