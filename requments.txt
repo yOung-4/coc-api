@@ -1,3 +1,5 @@
 fastapi[all]
-verify-email
+email-validator
 sqlalchemy
+psycopg2-binary
+passlib[bcrypt]
