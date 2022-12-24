@@ -15,7 +15,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 # 处理提交的新用户注册表单
-@router.put("/sign/")
+@router.post("/auth/sign-up/")
 def sign_up(email: str = Form(), password: str = Form(), nick_name: str = Form()):
     # 校验email地址是否合法并将其标准化
     try:
@@ -23,8 +23,7 @@ def sign_up(email: str = Form(), password: str = Form(), nick_name: str = Form()
     except EmailNotValidError:
         return {'status code': 'wrong email'}
     # 检查用户是否已经注册
-    stmt = select(User).where(User.email == email)
-    result = session.execute(stmt)
+    result = session.execute(select(User).where(User.email == email))
     result = result.scalar()
     if result is not None:
         return {'status code': 'exited email'}
