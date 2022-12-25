@@ -6,6 +6,7 @@ engine = create_engine("postgresql://web:kokodayo@127.0.0.1:5432/api", future=Tr
 session = sessionmaker(engine)
 
 Base = declarative_base()
+# User.__table__.create(engine)
 
 
 class User(Base):
@@ -14,5 +15,3 @@ class User(Base):
     email = Column(String)
     nick_name = Column(String)
     password = Column(String)
-
-# User.__table__.create(engine)
