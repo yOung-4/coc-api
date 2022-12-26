@@ -24,10 +24,10 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
             return {'status code': 'wrong token'}
     except JWTError:
         return {'status code': 'wrong token'}
-    session.execute(
+    result = session.execute(
         select(User).where(User.email == username)
     )
-    result = session.scalar()
+    result = result.scalar()
     if result is None:
         return {'status code': 'wrong token'}
-    return username
+    return result.id, username, result.nick_name
