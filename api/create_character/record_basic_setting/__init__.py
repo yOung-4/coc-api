@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Form
 from depends.token_log_in import get_current_user
-from database import Character_Basic, session
+from database import Character_Basic, session, Character_Ability_Basic
 
 router = APIRouter()
 session = session()
@@ -22,6 +22,18 @@ def record_basic_character(
         address=address,
         birthplace=birthplace
     )
+    new_character_ability_basic = Character_Ability_Basic(
+        STR=0,
+        CON=0,
+        SIZ=0,
+        DEX=0,
+        APP=0,
+        EDU=0,
+        INT=0,
+        POW=0,
+        MOV=0
+    )
     session.add(new_character_basic)
+    session.add(new_character_ability_basic)
     session.commit()
     return {'status code': 'record OK'}
