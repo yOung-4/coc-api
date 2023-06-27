@@ -1,9 +1,9 @@
 from pony import orm
-from dependencies.get_plugins import get_env
+from dependencies.get_plugins import dependencies_get_env
 
 orm.set_sql_debug(True)
 
-get_env = get_env()
+get_env = dependencies_get_env()
 
 db = orm.Database()
 db.bind(

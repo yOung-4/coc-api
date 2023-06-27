@@ -2,7 +2,7 @@ from pony import orm
 from dependencies.plugins.database import db
 
 
-class Database_sign_up_request(db.Entity):
+class Database_auth_user_list(db.Entity):
     id = orm.PrimaryKey(int, auto=True)
     email = orm.Required(str)
     password = orm.Required(str)

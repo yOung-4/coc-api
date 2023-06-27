@@ -3,5 +3,5 @@ from model.pydantic_model import env
 
 
 @lru_cache()
-def get_env():
+def get_env() -> env:
     return env()

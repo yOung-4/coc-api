@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from api.Auth import SignUp
+from api.auth import SignUp
 
 
 app = FastAPI()
 
-app.include_router(SignUp.router, tags=["auth"])
+app.include_router(SignUp.router, tags=["auth"],)
